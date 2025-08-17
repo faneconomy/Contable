@@ -1,0 +1,140 @@
+body {
+    background-color: #E0FFE0; /* Color de fondo verde claro */
+    background-image: radial-gradient(#90EE90 1px, transparent 1px);
+    background-size: 15px 15px;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    width: 600px;
+    padding: 20px;
+    border: 1px solid #778899;
+    background-color: #E0FFE0;
+    text-align: center;
+}
+
+.title {
+    background-color: #90EE90;
+    border: 1px solid #778899;
+    padding: 5px;
+    text-align: left;
+    font-size: 14px;
+}
+
+.logo-container {
+    margin: 20px 0;
+}
+
+.button-container button {
+    width: 80%;
+    padding: 15px;
+    margin: 10px 0;
+    border: 1px solid #778899;
+    cursor: pointer;
+    font-size: 16px;
+    color: white;
+}
+
+.green-button {
+    background-color: #008000;
+}
+
+.red-button {
+    background-color: #FF0000;
+}
+.button-container-sic {
+    display: flex;
+    flex-direction: column; /* Alinea los elementos en una columna */
+    align-items: center;    /* Centra los botones horizontalmente */
+    margin: 20px auto;
+    width: 80%; /* Ancho del contenedor */
+}
+
+.button-container-sic button {
+    width: 100%; /* Hace que los botones ocupen todo el ancho del contenedor */
+    padding: 15px;
+    margin: 10px 0; /* Espacio entre los botones */
+    border: 1px solid #778899;
+    cursor: pointer;
+    font-size: 16px;
+    color: white;
+    box-sizing: border-box;
+}
+
+.sic-button.green-button {
+    background-color: #008000; /* Color verde */
+}
+
+.sic-button.red-button {
+    background-color: #FF0000;
+}
+.container-rubros {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 2px solid #333;
+    background-color: #d1ffd1; /* Verde pálido similar al de la imagen */
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+.form-container {
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    margin-top: 20px;
+}
+
+.form-field {
+    margin-bottom: 20px;
+}
+
+.form-field label {
+    display: block;
+    background-color: #006400; /* Verde oscuro */
+    color: white;
+    padding: 8px;
+    border: 1px solid #000;
+}
+
+.form-field input, .form-field select {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid #000;
+    margin-top: 5px;
+}
+
+.button-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.button-grid button {
+    padding: 10px;
+    border: 2px solid #000;
+    cursor: pointer;
+}
+
+.red-button {
+    background-color: #dc3545;
+    color: white;
+}
+
+.green-button {
+    background-color: #28a745;
+    color: white;
+}
+
+#salir-btn {
+    grid-column: span 2;
+    background-color: #dc3545;
+    color: white;
+}

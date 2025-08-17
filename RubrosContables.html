@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Rubros Contables</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container-rubros">
+        <h1>SISTEMA INGRESAR RUBROS CONTABLES</h1>
+        <div class="form-container">
+            <div class="form-field">
+                <label>Área Contable</label>
+                <select id="area-contable"></select>
+            </div>
+            <div class="form-field">
+                <label>Nombre del Rubro Contable</label>
+                <input type="text" id="nombre-rubro" maxlength="47">
+            </div>
+            <div class="form-field">
+                <label>Significado del Rubro Contable</label>
+                <input type="text" id="significado-rubro" maxlength="47">
+            </div>
+            <div class="button-grid">
+                <button id="guardar-btn" class="green-button">Guardar Rubro Contable</button>
+                <button id="limpiar-btn" class="red-button">Limpiar Información</button>
+                <button id="consultar-btn" class="green-button">Consultar Rubro Contable</button>
+                <button id="eliminar-btn" class="red-button">Eliminar Rubro Contable</button>
+                <button id="salir-btn" class="red-button">Salir</button>
+            </div>
+        </div>
+    </div>
+    <script src="rubroscontables.js"></script>
+</body>
+</html>
