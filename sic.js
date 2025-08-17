@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // En Visual Basic, se escondía el formulario actual y se mostraba uno nuevo. [cite: 4]
     // En el entorno web, se redirige a una nueva página HTML para cada opción.
     document.getElementById('rubros-btn').addEventListener('click', () => {
-        window.location.href = 'rubroscontables.html';
+        window.location.href = 'RubrosContables.html';
     });
 
     document.getElementById('plan-btn').addEventListener('click', () => {
@@ -65,4 +65,5 @@ document.addEventListener('DOMContentLoaded', () => {
             event.returnValue = ''; // Esto es necesario para algunos navegadores.
         }
     });
+
 });
