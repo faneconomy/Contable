@@ -57,14 +57,15 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     
     // Lógica para la función de cierre del formulario (UserForm_QueryClose). [cite: 7]
-    window.addEventListener('beforeunload', (event) => {
-        const confirmExit = confirm("Desea CERRAR el Sistema EXCEL presione CERRAR");
-        if (!confirmExit) {
+   // window.addEventListener('beforeunload', (event) => {
+      //  const confirmExit = confirm("Desea CERRAR el Sistema EXCEL presione CERRAR");
+       // if (!confirmExit) {
             // Si el usuario presiona Cancelar, se evita que la página se cierre.
-            event.preventDefault();
-            event.returnValue = ''; // Esto es necesario para algunos navegadores.
+    //        event.preventDefault();
+   //         event.returnValue = ''; // Esto es necesario para algunos navegadores.
         }
     });
 
 });
+
 
