@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 method: 'POST',
                 body: JSON.stringify(datosRubro),
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'text/plain;charset=utf-8'  // Cambiado para evitar preflight 'application/json'
                 }
             });
             const result = await response.json();
@@ -107,5 +107,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     initializeForm();
 });
+
 
 
