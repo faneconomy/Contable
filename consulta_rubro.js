@@ -11,27 +11,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const volverBtn = document.getElementById('volver-btn');
     const salirBtn = document.getElementById('salir-btn');
     const tbody = document.querySelector('#tabla-rubros tbody');
-
-    async function fetchRubros() {
-        try {
-            const response = await fetch(API_URL, {
-                method: 'POST',
-                body: JSON.stringify({ action: 'fetchAll' }),
-                headers: { 'Content-Type': 'text/plain;charset=utf-8' }
-            });
-            const result = await response.json();
-            if (result.status === 'success') {
-                return result.data;
-            } else {
-                alert('Error al obtener los datos: ' + result.message);
-                return [];
-            }
-        } catch (error) {
-            alert('Ocurrió un error al consultar la API: ' + error.message);
+async function fetchRubros() {
+    try {
+        const response = await fetch(API_URL);  // Usa GET sin cuerpo
+        const result = await response.json();
+        // Maneja si es un arreglo directo o un objeto con estado
+        if (Array.isArray(result)) {
+            return result;
+        } else if (result.status === 'success') {
+            return result.data;
+        } else {
+            alert('Error al obtener los datos: ' + result.message);
             return [];
         }
+    } catch (error) {
+        alert('Ocurrió un error al consultar la API: ' + error.message);
+        return [];
     }
-
+}
     function populateSelects() {
         // Áreas fijas
         areasFijas.forEach(area => {
@@ -114,4 +111,5 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     initialize();
+
 });
