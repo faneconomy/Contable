@@ -11,24 +11,26 @@ document.addEventListener('DOMContentLoaded', () => {
     const volverBtn = document.getElementById('volver-btn');
     const salirBtn = document.getElementById('salir-btn');
     const tbody = document.querySelector('#tabla-rubros tbody');
-async function fetchRubros() {
-    try {
-        const response = await fetch(API_URL);  // Usa GET sin cuerpo
-        const result = await response.json();
-        // Maneja si es un arreglo directo o un objeto con estado
-        if (Array.isArray(result)) {
-            return result;
-        } else if (result.status === 'success') {
-            return result.data;
-        } else {
-            alert('Error al obtener los datos: ' + result.message);
+
+    async function fetchRubros() {
+        try {
+            const response = await fetch(API_URL);  // Usa GET sin cuerpo
+            const result = await response.json();
+            // Maneja si es un arreglo directo o un objeto con estado
+            if (Array.isArray(result)) {
+                return result;
+            } else if (result.status === 'success') {
+                return result.data;
+            } else {
+                alert('Error al obtener los datos: ' + result.message);
+                return [];
+            }
+        } catch (error) {
+            alert('Ocurrió un error al consultar la API: ' + error.message);
             return [];
         }
-    } catch (error) {
-        alert('Ocurrió un error al consultar la API: ' + error.message);
-        return [];
     }
-}
+
     function populateSelects() {
         // Áreas fijas
         areasFijas.forEach(area => {
@@ -63,20 +65,25 @@ async function fetchRubros() {
     }
 
     function filterData() {
-        const searchArea = busquedaArea.value;
-        const searchRubro = busquedaRubro.value;
+        const searchArea = busquedaArea.value.toLowerCase();
+        const searchRubro = busquedaRubro.value.toLowerCase();
         const filtered = allData.filter(item =>
-            (searchArea === '' || item.area === searchArea) &&
-            (searchRubro === '' || item.nombre === searchRubro)
+            (searchArea === '' || item.area.toLowerCase().includes(searchArea)) &&
+            (searchRubro === '' || item.nombre.toLowerCase().includes(searchRubro))
         );
         displayData(filtered);
     }
 
     async function initialize() {
         allData = await fetchRubros();
+        console.log('Datos obtenidos:', allData);  // Depuración
         populateSelects();
         displayData(allData);
     }
+
+    // Eventos de cambio para búsquedas dinámicas
+    busquedaArea.addEventListener('change', filterData);
+    busquedaRubro.addEventListener('change', filterData);
 
     consultarBtn.addEventListener('click', () => {
         if (busquedaRubro.value === '' && busquedaArea.value === '') {
@@ -111,5 +118,5 @@ async function fetchRubros() {
     });
 
     initialize();
-
 });
+
