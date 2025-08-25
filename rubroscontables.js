@@ -79,7 +79,11 @@ document.addEventListener('DOMContentLoaded', () => {
             alert("Ocurrió un error al guardar el rubro: " + error.message);
         }
     });
-
+      // Lógica del botón "Consultar Rubro Contable"
+    const consultarBtn = document.getElementById('consultar-btn');
+consultarBtn.addEventListener('click', () => {
+    window.location.href = 'consulta_rubro.html';
+});
     // Lógica del botón "Salir"
     salirBtn.addEventListener('click', () => {
         const nombre = nombreRubroInput.value.trim();
@@ -107,6 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     initializeForm();
 });
+
 
 
 
