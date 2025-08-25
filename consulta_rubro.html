@@ -3,41 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <title>SISTEMA CONSULTA RUBRO CONTABLE</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css">  <!-- Vincula tu CSS si existe -->
+    <script src="consulta_rubro.js" defer></script>
 </head>
 <body>
-    <div class="container">
-        <div class="title">SISTEMA CONSULTA RUBRO CONTABLE</div>
-        
-        <div class="form-field">
-            <label for="busqueda-rubro">Consultar por Rubro Contable</label>
-            <select id="busqueda-rubro"></select>
-            <button id="consultar-btn" class="green-button">Consultar</button>
-        </div>
-        
-        <div class="form-field">
-            <label for="busqueda-area">Consultar por Área Contable</label>
-            <select id="busqueda-area"></select>
-            <button id="limpiar-btn" class="red-button">Limpiar</button>
-        </div>
-        
-        <table id="tabla-rubros">
-            <thead>
-                <tr>
-                    <th>Área Contable</th>
-                    <th>Rubro Contable</th>
-                    <th>Significado Contable</th>
-                </tr>
-            </thead>
-            <tbody></tbody>
-        </table>
-        
-        <div class="button-container-sic">
-            <button id="volver-btn" class="sic-button green-button">Volver</button>
-            <button id="salir-btn" class="sic-button red-button">Salir</button>
-        </div>
+    <h1>SISTEMA CONSULTA RUBRO CONTABLE</h1>
+    <div>
+        <label for="busqueda-rubro">Consultar por Rubro Contable</label>
+        <select id="busqueda-rubro"></select>
+        <button id="consultar-btn">Consultar</button>
     </div>
-    
-    <script src="consulta_rubro.js"></script>
+    <div>
+        <label for="busqueda-area">Consultar por Área Contable</label>
+        <select id="busqueda-area"></select>
+        <button id="limpiar-btn">Limpiar</button>
+    </div>
+    <table id="tabla-rubros">
+        <thead>
+            <tr>
+                <th>Área Contable</th>
+                <th>Rubro Contable</th>
+                <th>Significado Contable</th>
+            </tr>
+        </thead>
+        <tbody></tbody>  <!-- Esto es crítico para insertar datos -->
+    </table>
+    <button id="volver-btn">Volver</button>
+    <button id="salir-btn">Salir</button>
 </body>
 </html>
