@@ -47,6 +47,7 @@ body {
 .red-button {
     background-color: #FF0000;
 }
+
 .button-container-sic {
     display: flex;
     flex-direction: column; /* Alinea los elementos en una columna */
@@ -73,6 +74,7 @@ body {
 .sic-button.red-button {
     background-color: #FF0000;
 }
+
 .container-rubros {
     max-width: 600px;
     margin: 50px auto;
@@ -138,3 +140,46 @@ body {
     background-color: #dc3545;
     color: white;
 }
+
+/* Nuevas reglas para SISTEMA CONSULTA RUBRO CONTABLE */
+h1 {
+    text-align: center;
+    color: #006400;
+    font-size: 28px;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #d1ffd1;
+    border: 2px solid #333;
+    width: 100%;
+    max-width: 800px;
+}
+
+.search-section {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.search-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #006400;
+}
+
+#consultar-btn, #volver-btn {
+    background-color: #28a745;
+}
+
+#limpiar-btn, #salir-btn {
+    background-color: #dc3545;
+}
+
+#consultar-btn:hover, #volver-btn:hover {
+    background-color: #218838;
+}
+
+#limpiar-btn:hover, #salir-btn:hover {
+    background-color:
