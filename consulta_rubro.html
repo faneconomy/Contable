@@ -7,36 +7,38 @@
     <script src="consulta_rubro.js" defer></script>
 </head>
 <body>
-    <h1>SISTEMA CONSULTA RUBRO CONTABLE</h1>
-    <div class="search-section">
-        <div class="search-row">
-            <label for="busqueda-rubro">Consultar por Rubro Contable:</label>
-            <select id="busqueda-rubro">
-                <option value="">Seleccione un rubro</option>
-            </select>
-            <button id="consultar-btn">Consultar</button>
+    <div class="container-rubros">
+        <h1>SISTEMA CONSULTA RUBRO CONTABLE</h1>
+        <div class="search-section">
+            <div class="search-row">
+                <label for="busqueda-rubro">Consultar por Rubro Contable:</label>
+                <select id="busqueda-rubro">
+                    <option value="">Seleccione un rubro</option>
+                </select>
+                <button id="consultar-btn">Consultar</button>
+            </div>
+            <div class="search-row">
+                <label for="busqueda-area">Consultar por Área Contable:</label>
+                <select id="busqueda-area">
+                    <option value="">Seleccione un área</option>
+                </select>
+                <button id="limpiar-btn">Limpiar</button>
+            </div>
         </div>
-        <div class="search-row">
-            <label for="busqueda-area">Consultar por Área Contable:</label>
-            <select id="busqueda-area">
-                <option value="">Seleccione un área</option>
-            </select>
-            <button id="limpiar-btn">Limpiar</button>
+        <table id="tabla-rubros">
+            <thead>
+                <tr>
+                    <th>Área Contable</th>
+                    <th>Rubro Contable</th>
+                    <th>Significado Contable</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <div class="nav-buttons">
+            <button id="volver-btn">Volver</button>
+            <button id="salir-btn">Salir</button>
         </div>
-    </div>
-    <table id="tabla-rubros">
-        <thead>
-            <tr>
-                <th>Área Contable</th>
-                <th>Rubro Contable</th>
-                <th>Significado Contable</th>
-            </tr>
-        </thead>
-        <tbody></tbody>
-    </table>
-    <div class="nav-buttons">
-        <button id="volver-btn">Volver</button>
-        <button id="salir-btn">Salir</button>
     </div>
 </body>
 </html>
