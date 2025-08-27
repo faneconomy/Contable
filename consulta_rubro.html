@@ -2,29 +2,133 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SISTEMA CONSULTA RUBRO CONTABLE</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="consulta_rubro.js" defer></script>
+    <link rel="stylesheet" href="styles.css"> <!-- Asumiendo que styles.css está enlazado externamente -->
+    <style>
+        /* Adiciones específicas para consulta_rubro para mejorar la interfaz vertical y manejar tablas largas */
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .container-rubros {
+            width: 100%;
+            max-width: 600px; /* Manteniendo el ancho máximo para mobile-friendly */
+            margin: 20px auto;
+            padding: 20px;
+            border: 2px solid #333;
+            background-color: #d1ffd1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            font-size: 24px; /* Ajuste para mejor legibilidad en vertical */
+            margin-bottom: 15px;
+            width: 100%;
+        }
+
+        .search-section {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .search-row {
+            display: flex;
+            flex-direction: column; /* Cambiado a column para una interfaz estrictamente vertical */
+            align-items: stretch;
+            gap: 10px;
+            padding: 10px;
+            background-color: #fff;
+            border: 1px solid #006400;
+        }
+
+        .search-row label {
+            text-align: left;
+            font-weight: bold;
+        }
+
+        .search-row select,
+        .search-row button {
+            width: 100%; /* Botones y selects ocupan todo el ancho para verticalidad */
+        }
+
+        #tabla-rubros {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        #tabla-rubros th,
+        #tabla-rubros td {
+            border: 1px solid #006400;
+            padding: 8px;
+            text-align: left;
+        }
+
+        #tabla-rubros th {
+            background-color: #006400;
+            color: white;
+        }
+
+        /* Contenedor para la tabla con scroll vertical */
+        .table-container {
+            width: 100%;
+            max-height: 400px; /* Altura máxima fija; ajusta según necesidades */
+            overflow-y: auto; /* Barra de desplazamiento vertical si el contenido excede */
+            border: 1px solid #006400;
+            margin-top: 20px;
+        }
+
+        .button-grid {
+            width: 100%;
+            display: flex;
+            flex-direction: column; /* Botones en vertical */
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .button-grid button {
+            width: 100%;
+        }
+
+        /* Hover effects completados (el CSS original estaba incompleto) */
+        #limpiar-btn:hover, #salir-btn:hover {
+            background-color: #c82333; /* Rojo más oscuro para hover */
+        }
+    </style>
 </head>
 <body>
     <div class="container-rubros">
         <h1>SISTEMA CONSULTA RUBRO CONTABLE</h1>
+
         <div class="search-section">
             <div class="search-row">
-                <label for="busqueda-rubro">Consultar por Rubro Contable:</label>
+                <label>Consultar por Rubro Contable:</label>
                 <select id="busqueda-rubro">
                     <option value="">Seleccione un rubro</option>
                 </select>
-                <button id="consultar-btn">Consultar</button>
+                <button id="consultar-btn" class="green-button">Consultar</button>
             </div>
+
             <div class="search-row">
-                <label for="busqueda-area">Consultar por Área Contable:</label>
+                <label>Consultar por Área Contable:</label>
                 <select id="busqueda-area">
                     <option value="">Seleccione un área</option>
                 </select>
-                <button id="limpiar-btn">Limpiar</button>
+                <button id="limpiar-btn" class="red-button">Limpiar</button>
             </div>
         </div>
+
         <div class="table-container">
             <table id="tabla-rubros">
                 <thead>
@@ -34,13 +138,18 @@
                         <th>Significado Contable</th>
                     </tr>
                 </thead>
-                <tbody></tbody>
+                <tbody>
+                    <!-- Filas se llenan dinámicamente vía JS -->
+                </tbody>
             </table>
         </div>
-        <div class="nav-buttons">
-            <button id="volver-btn">Volver</button>
-            <button id="salir-btn">Salir</button>
+
+        <div class="button-grid">
+            <button id="volver-btn" class="green-button">Volver</button>
+            <button id="salir-btn" class="red-button">Salir</button>
         </div>
     </div>
+
+    <script src="consulta_rubro.js"></script>
 </body>
 </html>
