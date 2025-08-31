@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const response = await fetch(API_URL, {
                 method: 'POST',
                 body: JSON.stringify({ action: 'fetchAll' }),
-                headers: { 'Content-Type': 'text/plain;charset=utf-8' }
+                headers: { 'Content-Type': 'application/json' }
             });
             const result = await response.json();
             if (result.status === 'success') {
@@ -60,10 +60,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const response = await fetch(API_URL, {
                 method: 'POST',
                 body: JSON.stringify({ action: 'checkUsage', nombre }),
-                headers: { 'Content-Type': 'text/plain;charset=utf-8' }
+                headers: { 'Content-Type': 'application/json' }
             });
             const result = await response.json();
-            return result.canDelete || false; // Default a false si no hay respuesta
+            return result.canDelete || false;
         } catch (error) {
             alert('Error al verificar uso: ' + error.message);
             return false;
@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const response = await fetch(API_URL, {
                     method: 'POST',
                     body: JSON.stringify({ action: 'delete', nombre: selectedRubro }),
-                    headers: { 'Content-Type': 'text/plain;charset=utf-8' }
+                    headers: { 'Content-Type': 'application/json' }
                 });
                 const result = await response.json();
                 if (result.status === 'success') {
