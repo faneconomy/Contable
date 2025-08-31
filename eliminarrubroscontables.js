@@ -8,6 +8,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const salirBtn = document.getElementById('salir-btn');
     let allData = [];
 
+    // Verificación de elementos del DOM
+    if (!rubroSelect || !areaDisplay || !significadoDisplay || !eliminarBtn || !volverBtn || !salirBtn) {
+        console.error('Uno o más elementos del DOM no se encontraron:', {
+            rubroSelect, areaDisplay, significadoDisplay, eliminarBtn, volverBtn, salirBtn
+        });
+        alert('Error: Algunos elementos de la página no se cargaron correctamente. Revisa la consola para más detalles.');
+        return;
+    }
+
     async function fetchRubros() {
         try {
             const response = await fetch(API_URL, {
@@ -29,13 +38,21 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function populateSelect() {
+        rubroSelect.innerHTML = ''; // Limpiar opciones existentes
         const uniqueRubros = [...new Set(allData.map(item => item.nombre))].sort();
-        uniqueRubros.forEach(rubro => {
+        if (uniqueRubros.length > 0) {
+            uniqueRubros.forEach(rubro => {
+                const option = document.createElement('option');
+                option.value = rubro;
+                option.textContent = rubro;
+                rubroSelect.appendChild(option);
+            });
+        } else {
             const option = document.createElement('option');
-            option.value = rubro;
-            option.textContent = rubro;
+            option.value = '';
+            option.textContent = 'No hay rubros disponibles';
             rubroSelect.appendChild(option);
-        });
+        }
     }
 
     async function checkUsage(nombre) {
@@ -46,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 headers: { 'Content-Type': 'text/plain;charset=utf-8' }
             });
             const result = await response.json();
-            return result.canDelete;
+            return result.canDelete || false; // Default a false si no hay respuesta
         } catch (error) {
             alert('Error al verificar uso: ' + error.message);
             return false;
@@ -57,8 +74,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const selectedRubro = rubroSelect.value;
         const rubroData = allData.find(item => item.nombre === selectedRubro);
         if (rubroData) {
-            areaDisplay.value = rubroData.area;
-            significadoDisplay.value = rubroData.significado;
+            areaDisplay.value = rubroData.area || '';
+            significadoDisplay.value = rubroData.significado || '';
         } else {
             areaDisplay.value = '';
             significadoDisplay.value = '';
@@ -90,12 +107,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (result.status === 'success') {
                     alert(result.message);
                     allData = await fetchRubros();
-                    rubroSelect.innerHTML = '';
                     populateSelect();
                     areaDisplay.value = '';
                     significadoDisplay.value = '';
                 } else {
-                    alert(result.message);
+                    alert(result.message || 'Error desconocido al eliminar');
                 }
             } catch (error) {
                 alert('Error al eliminar: ' + error.message);
