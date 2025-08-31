@@ -2,37 +2,43 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema de Rubros Contables</title>
+    <title>INGRESAR, CONSULTAR Y ELIMINAR RUBROS CONTABLES</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container-rubros">
-        <h1>INGRESAR, CONSULTAR Y ELIMINAR RUBROS CONTABLES</h1>
+        <div class="title">INGRESAR, CONSULTAR Y ELIMINAR RUBROS CONTABLES</div>
+        
         <div class="form-container">
             <div class="form-field">
-                <label>Área Contable</label>
-                <select id="area-contable"></select>
+                <label for="area-contable">Área Contable</label>
+                <select id="area-contable">
+                    <option value="">Seleccione...</option>
+                </select>
             </div>
+            
             <div class="form-field">
-                <label>Nombre del Rubro Contable</label>
-                <input type="text" id="nombre-rubro" maxlength="47">
+                <label for="nombre-rubro">Nombre del Rubro Contable</label>
+                <input type="text" id="nombre-rubro" placeholder="Ingrese el nombre">
             </div>
+            
             <div class="form-field">
-                <label>Significado del Rubro Contable</label>
-                <input type="text" id="significado-rubro" maxlength="47">
+                <label for="significado-rubro">Significado del Rubro Contable</label>
+                <textarea id="significado-rubro" placeholder="Ingrese el significado"></textarea>
             </div>
+            
             <div class="button-grid">
-                <button id="guardar-btn" class="green-button">Guardar Rubro Contable</button>
-                <button id="limpiar-btn" class="red-button">Limpiar Información</button>
-                <button id="consultar-btn" class="green-button">Consultar Rubro Contable</button>
-                <button id="eliminar-btn" class="red-button">Eliminar Rubro Contable</button>
-                <button id="salir-btn" class="red-button">Salir</button>
+                <button type="button" id="guardar-btn" class="green-button">Guardar Rubro Contable</button>
+                <button type="button" id="limpiar-btn" class="red-button">Limpiar Información</button>
+                <button type="button" id="consultar-btn" class="green-button">Consultar Rubro Contable</button>
+                <button type="button" id="eliminar-btn" class="red-button">Eliminar Rubro Contable</button>
+                <button type="button" id="salir-btn" class="red-button">Salir</button>
             </div>
         </div>
     </div>
+    
     <script src="rubroscontables.js"></script>
-</body>C
+</body>
 </html>
 
 

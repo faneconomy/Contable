@@ -5,10 +5,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const significadoRubroInput = document.getElementById('significado-rubro');
     const guardarBtn = document.getElementById('guardar-btn');
     const limpiarBtn = document.getElementById('limpiar-btn');
+    const consultarBtn = document.getElementById('consultar-btn');
+    const eliminarBtn = document.getElementById('eliminar-btn');
     const salirBtn = document.getElementById('salir-btn');
-    
-    // **¡Importante! Reemplaza este valor con la URL de tu API de Apps Script**
-    const API_URL = 'https://script.google.com/macros/s/AKfycbz-FKxFVCy7jtCr5YfdCCkeHSgydBPf_oRs8MvwxHEJgKNUhIBLlnySj8xmjLAzHUy3/exec'; 
+
+    // URL de la API de Google Apps Script
+    const API_URL = 'https://script.google.com/macros/s/AKfycbz-FKxFVCy7jtCr5YfdCCkeHSgydBPf_oRs8MvwxHEJgKNUhIBLlnySj8xmjLAzHUy3/exec';
 
     // Inicializar el formulario con la lista desplegable del área contable
     function initializeForm() {
@@ -25,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Lógica del botón "Limpiar Información"
     limpiarBtn.addEventListener('click', () => {
         if (nombreRubroInput.value.trim() === "" && areaContableSelect.value.trim() === "" && significadoRubroInput.value.trim() === "") {
-            alert("Debes ingresar datos para poder limpiarlos."); 
+            alert("Debes ingresar datos para poder limpiarlos.");
         } else {
             const confirmacion = confirm("¿Quieres borrar los datos?");
             if (confirmacion) {
@@ -37,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Lógica del botón "Guardar Rubro Contable" actualizada para usar la API
+    // Lógica del botón "Guardar Rubro Contable"
     guardarBtn.addEventListener('click', async () => {
         const nombre = nombreRubroInput.value.trim();
         const area = areaContableSelect.value;
@@ -60,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 method: 'POST',
                 body: JSON.stringify(datosRubro),
                 headers: {
-                    'Content-Type': 'text/plain;charset=utf-8'  // Cambiado para evitar preflight 'application/json'
+                    'Content-Type': 'text/plain;charset=utf-8'
                 }
             });
             const result = await response.json();
@@ -79,14 +81,20 @@ document.addEventListener('DOMContentLoaded', () => {
             alert("Ocurrió un error al guardar el rubro: " + error.message);
         }
     });
-      // Lógica del botón "Consultar Rubro Contable"
-    const consultarBtn = document.getElementById('consultar-btn');
-consultarBtn.addEventListener('click', () => {
-    window.location.href = 'consulta_rubro.html';
-});
+
+    // Lógica del botón "Consultar Rubro Contable"
+    consultarBtn.addEventListener('click', () => {
+        window.location.href = 'consulta_rubro.html';
+    });
+
+    // Lógica del botón "Eliminar Rubro Contable"
+    eliminarBtn.addEventListener('click', () => {
+        window.location.href = 'eliminarrubroscontables.html';
+    });
+
     // Lógica del botón "Salir"
     salirBtn.addEventListener('click', () => {
-        const nombre = nombreRubroInput.value.trim();
+        const nombre = nameRubroInput.value.trim();
         const area = areaContableSelect.value;
         const significado = significadoRubroInput.value.trim();
         if (nombre === "" && area === "" && significado === "") {
