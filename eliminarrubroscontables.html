@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>SISTEMA ELIMINAR RUBROS CONTABLES</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container-eliminar">
+        <div class="title">SISTEMA ELIMINAR RUBROS CONTABLES</div>
+        
+        <div class="form-field">
+            <label for="rubro-select">Seleccionar Rubro Contable</label>
+            <select id="rubro-select"></select>
+        </div>
+        
+        <div class="form-field">
+            <label>Área Contable</label>
+            <input type="text" id="area-display" readonly>
+        </div>
+        
+        <div class="form-field">
+            <label>Significado del Rubro Contable</label>
+            <input type="text" id="significado-display" readonly>
+        </div>
+        
+        <div class="button-grid">
+            <button id="eliminar-btn" class="red-button">Eliminar Rubro Contable</button>
+        </div>
+        
+        <div class="button-container-sic">
+            <button id="volver-btn" class="sic-button green-button">Volver</button>
+            <button id="salir-btn" class="sic-button red-button">Salir</button>
+        </div>
+    </div>
+    
+    <script src="eliminarrubroscontables.js"></script>
+</body>
+</html>
