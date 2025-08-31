@@ -18,24 +18,28 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     async function fetchRubros() {
-        try {
-            const response = await fetch(API_URL, {
-                method: 'POST',
-                body: JSON.stringify({ action: 'fetchAll' }),
-                headers: { 'Content-Type': 'application/json' }
-            });
-            const result = await response.json();
-            if (result.status === 'success') {
-                return result.data;
-            } else {
-                alert('Error al obtener los datos: ' + result.message);
-                return [];
-            }
-        } catch (error) {
-            alert('Ocurrió un error al consultar la API: ' + error.message);
+    try {
+        const response = await fetch(API_URL, {
+            method: 'POST',
+            body: JSON.stringify({ action: 'fetchAll' }),
+            headers: { 'Content-Type': 'application/json' }
+        });
+        if (!response.ok) {
+            throw new Error(`Error HTTP: ${response.status} - ${await response.text()}`);
+        }
+        const result = await response.json();
+        if (result.status === 'success') {
+            return result.data;
+        } else {
+            alert('Error al obtener los datos: ' + result.message);
             return [];
         }
+    } catch (error) {
+        console.error('Detalles del error:', error);
+        alert('Ocurrió un error al consultar la API: ' + error.message);
+        return [];
     }
+}
 
     function populateSelect() {
         rubroSelect.innerHTML = ''; // Limpiar opciones existentes
@@ -139,4 +143,5 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     initialize();
+
 });
