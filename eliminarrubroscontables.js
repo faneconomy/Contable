@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const API_URL = 'https://script.google.com/macros/s/AKfycbz-FKxFVCy7jtCr5YfdCCkeHSgydBPf_oRs8MvwxHEJgKNUhIBLlnySj8xmjLAzHUy3/exec';
+    const API_URL = 'https://script.google.com/macros/s/AKfycbyEuqHKSFwIYczCLEIsleWYIEmPUabOECGSMQiQCnl2TAZT7ROqCepbXtxq2KRXiaLp/exec';
     const rubroSelect = document.getElementById('rubro-select');
     const areaDisplay = document.getElementById('area-display');
     const significadoDisplay = document.getElementById('significado-display');
@@ -190,3 +190,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
     initialize();
 });
+
