@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const salirBtn = document.getElementById('salir-btn');
 
     // URL de la API de Google Apps Script
-    const API_URL = 'https://script.google.com/macros/s/AKfycbyEuqHKSFwIYczCLEIsleWYIEmPUabOECGSMQiQCnl2TAZT7ROqCepbXtxq2KRXiaLp/exec';
+    const API_URL = 'https://script.google.com/macros/s/AKfycbz-FKxFVCy7jtCr5YfdCCkeHSgydBPf_oRs8MvwxHEJgKNUhIBLlnySj8xmjLAzHUy3/exec';
 
     // Inicializar el formulario con la lista desplegable del área contable
     function initializeForm() {
@@ -119,6 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     initializeForm();
 });
+
 
 
 
