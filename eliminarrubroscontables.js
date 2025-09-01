@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // REEMPLAZA ESTA URL CON LA QUE TE DIO TU ÚLTIMO DESPLIEGUE
     const API_URL = 'https://script.google.com/macros/s/AKfycbyBsSau8ZGyvcqyvj5hEDvq1oML9ohbngw_859Rc-1iDFVeQofCpIrztIKTDEpBZMTd/exec';
 
     const rubroSelect = document.getElementById('rubro-select');
@@ -10,7 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const salirBtn = document.getElementById('salir-btn');
     let allData = [];
 
-    // Verificación de elementos del DOM
     if (!rubroSelect || !areaDisplay || !significadoDisplay || !eliminarBtn || !volverBtn || !salirBtn) {
         console.error('Uno o más elementos del DOM no se encontraron:', {
             rubroSelect, areaDisplay, significadoDisplay, eliminarBtn, volverBtn, salirBtn
@@ -45,8 +43,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const selectedRubro = rubroSelect.value;
         const selectedData = allData.find(item => item.nombre === selectedRubro);
         if (selectedData) {
-            areaDisplay.value = selectedData.area;
-            significadoDisplay.value = selectedData.significado;
+            areaDisplay.value = selectedData.area || '';
+            significadoDisplay.value = selectedData.significado || '';
         } else {
             areaDisplay.value = '';
             significadoDisplay.value = '';
@@ -56,35 +54,34 @@ document.addEventListener('DOMContentLoaded', () => {
     eliminarBtn.addEventListener('click', async () => {
         const selectedRubro = rubroSelect.value;
         if (!selectedRubro) {
-            alert('Por favor, selecciona un rubro contable para eliminar.');
+            alert('Seleccione un Rubro Contable para eliminar');
             return;
         }
 
         try {
-            const usageCheckResponse = await fetch(API_URL, {
+            const response = await fetch(API_URL, {
                 method: 'POST',
                 body: JSON.stringify({ action: 'checkUsage', nombre: selectedRubro }),
                 headers: { 'Content-Type': 'application/json' }
             });
-            const usageCheckResult = await usageCheckResponse.json();
-
-            if (usageCheckResult.canDelete) {
-                const confirmacion = confirm(`¿Estás seguro de que quieres eliminar el rubro: ${selectedRubro}?`);
+            const result = await response.json();
+            if (result.canDelete) {
+                const confirmacion = confirm(`¿Desea eliminar el rubro contable "${selectedRubro}"?`);
                 if (confirmacion) {
-                    const response = await fetch(API_URL, {
+                    const deleteResponse = await fetch(API_URL, {
                         method: 'POST',
                         body: JSON.stringify({ action: 'delete', nombre: selectedRubro }),
                         headers: { 'Content-Type': 'application/json' }
                     });
-                    const result = await response.json();
-                    if (result.status === 'success') {
-                        alert(result.message);
+                    const deleteResult = await deleteResponse.json();
+                    if (deleteResult.status === 'success') {
+                        alert(deleteResult.message);
                         allData = await fetchRubros();
                         populateSelect();
                         areaDisplay.value = '';
                         significadoDisplay.value = '';
                     } else {
-                        alert(result.message || 'Error desconocido al eliminar');
+                        alert(deleteResult.message || 'Error desconocido al eliminar');
                     }
                 }
             } else {
@@ -136,5 +133,3 @@ document.addEventListener('DOMContentLoaded', () => {
 
     initialize();
 });
-
-
