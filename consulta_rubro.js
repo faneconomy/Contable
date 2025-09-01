@@ -1,6 +1,6 @@
 // consulta_rubro.js
 document.addEventListener('DOMContentLoaded', () => {
-    const API_URL = 'https://script.google.com/macros/s/AKfycbz-FKxFVCy7jtCr5YfdCCkeHSgydBPf_oRs8MvwxHEJgKNUhIBLlnySj8xmjLAzHUy3/exec';
+    const API_URL = 'https://script.google.com/macros/s/AKfycbyBsSau8ZGyvcqyvj5hEDvq1oML9ohbngw_859Rc-1iDFVeQofCpIrztIKTDEpBZMTd/exec';
     const areasFijas = ["Activo", "Pasivo", "PN Capital", "PN Resultado R+", "PN Resultado R-"];
     let allData = [];
 
@@ -119,6 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     initialize();
 });
+
 
 
 
