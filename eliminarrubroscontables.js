@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     // REEMPLAZA ESTA URL CON LA QUE TE DIO TU ÚLTIMO DESPLIEGUE
-    const API_URL = 'https://script.google.com/macros/s/AKfycbyEuqHKSFwIYczCLEIsleWYIEmPUabOECGSMQiQCnl2TAZT7ROqCepbXtxq2KRXiaLp/exec';
+    const API_URL = 'https://script.google.com/macros/s/AKfycbyVRPnbM43UIecN9MqIqfHYAxsZeRdrgznbbcYP2Am5V7iyYnr-OE-sPHcvXr9Lexbz/exec';
 
     const rubroSelect = document.getElementById('rubro-select');
     const areaDisplay = document.getElementById('area-display');
@@ -136,3 +136,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
     initialize();
 });
+
